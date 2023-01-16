@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Goal</title>
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="navbar.css">
+        <link rel="stylesheet" href="auth.css">
+    </head>
+    <body>
+        <div class="dark-blue navbar">
+            <div class="nav-title">Goal</div>
+        </div>
+        <div class="form-card light-blue">
+            <div class="form-title">Goal #</div>
+            <div class="goal-description" style="width: 70%;">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis id laboriosam nostrum rerum assumenda repudiandae illo voluptates aliquid dolorem, veritatis amet deleniti, praesentium sed beatae dolorum omnis eius tempore quis?
+            </div>
+            <div class="form-title">Add subgoal</div>
+            <div class="form-row" style="width: 60%; margin: 0;">
+                <div class="subgoal-column-choice">
+                    <div>
+                        <input type="radio" id="numeric" name="subgoaltype" placeholder="Numeric" class="auth-input">
+                        <label for="numeric" class="text-blue">
+                            Numeric
+                        </label>
+                    </div>
+                    <div>
+                        <input type="radio" id="boolean" name="subgoaltype" placeholder="Boolean" class="auth-input">
+                        <label for="boolean" class="text-blue">
+                            Boolean
+                        </label>
+                    </div>
+                    <div>
+                        <input type="radio" id="other" name="subgoaltype" placeholder="Other" class="auth-input">
+                        <label for="other" class="text-blue">
+                            Other
+                        </label>
+                    </div>
+                </div>
+                <textarea placeholder="Subgoal" class="auth-input area"></textarea>
+            </div>
+            <button class="form-submit">Submit</button>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,58 @@
+.form-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+}
+.auth-input{
+    padding: 1vh;
+    border-radius: 5px;
+    border: 0;
+    margin: 0;
+}
+.subgoal-column-choice{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 1vh;
+}
+.form-card{
+    padding: 5vh;
+    margin-top: 5vh !important;
+    width: 60vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5vh;
+}
+.form-submit{
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    border-radius: 5px;
+    border: 0;
+    background-color: #20339e;
+    color: #eaedff;
+    font-size: 1rem;
+    font-weight: 600;
+    min-width: 5vw;
+    max-width: 50vw;
+}
+.form-title{
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0 1rem;
+    padding: 1rem 0;
+    color: #20339e;
+    margin-bottom: -2vh;
+}
+.area{
+    width: 60%;
+    height: 20vh;
+
+    border-radius: 5px;
+    border: 0;
+}
