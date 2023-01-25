@@ -14,23 +14,161 @@
                 <div class="nav-navigation">Sign in</div>
             </div>
         </div>
-        <div class="form-card light-blue">
+        <form class="form-card light-blue">
             <div class="form-title">Create an account</div>
-            <form action="" class="form-row">
-                <input type="email" placeholder="Email" class="auth-input">
-                <input type="password" placeholder="Password" class="auth-input">
-                <input type="text" placeholder="username" class="auth-input">
-                <input type="text" placeholder="password" class="auth-input">
-                <input type="text" placeholder="name" class="auth-input">
+            <div class="form-row">
+                <input type="email" placeholder="email" class="auth-input" required>
+                <input type="password" placeholder="password" minlength="12" class="auth-input" pattern="^(?=.*[A-Z])(?=.*[@#$%^&])(?=.*[0-9])(?=.*[a-z])">
+                <input
+                type="text" placeholder="username" class="auth-input" pattern="^[A-Z][A-Za-z0-9]*[0-9!@#$%^&]$" minlength="5" maxlength="12">
+                <!-- start with capital letter, anything in the middle and end with a number or special character -->
+                <input
+                type="text" placeholder="name" class="auth-input" pattern="^[A-Za-z]*$">
+                <!-- must contain at least one uppercase letter, one lowercase letter, one number, one special character -->
                 <input type="text" placeholder="address" class="auth-input">
-                <input type="text" placeholder="country" class="auth-input">
-                <input type="text" placeholder="ZIP code" class="auth-input">
-                <input type="text" placeholder="email" class="auth-input">
-                <input type="text" placeholder="sex" class="auth-input">
-                <input type="text" placeholder="language" class="auth-input">
-            </form>
-            <textarea type="text" placeholder="bio" class="auth-input area"></textarea>
-            <button class="form-submit">Submit</button>
-        </div>
+                <input type="text" placeholder="country" class="auth-input" required>
+                <input type="text" placeholder="ZIP code" class="auth-input" pattern="^[0-9]{4}[A-Za-z]{2}">
+                <input type="text" placeholder="sex" class="auth-input" required>
+                <input type="text" placeholder="language" class="auth-input" required>
+            </div>
+            <button class="form-submit" type="submit">Submit</button>
+        </form>
     </body>
-</html></body></html>
+</html>
+<script>
+    // Getting references to form elements and hidden div
+    var form = document.querySelector("form");
+    var submitButton = document.querySelector("body > div.form-card.light-blue > button");
+    var hiddenDiv = document.createElement("div");
+    var emailField = document.querySelector("input[placeholder='email']");
+    var passwordField = document.querySelector("input[placeholder='password']");
+    var usernameField = document.querySelector("input[placeholder='username']");
+    var nameField = document.querySelector("input[placeholder='name']");
+    var addressField = document.querySelector("input[placeholder='address']");
+    var countryField = document.querySelector("input[placeholder='country']");
+    var zipField = document.querySelector("input[placeholder='ZIP code']");
+    var sexField = document.querySelector("input[placeholder='sex']");
+    var languageField = document.querySelector("input[placeholder='language']");
+    hiddenDiv.id = "data-display";
+    hiddenDiv.style.display = "none";
+    document.body.appendChild(hiddenDiv);
+
+    // Initialising the variables; KP stands for "key presses" while CT stands for "characters typed"
+    var clickCount = 0;
+    var startTime,
+        endTime;
+    var timeSpent;
+    var emailKP = 0;
+    var emailCT = 0;
+    var passwordKP = 0;
+    var passwordCT = 0;
+    var usernameKP = 0;
+    var usernameCT = 0;
+    var nameKP = 0;
+    var nameCT = 0;
+    var addressKP = 0;
+    var addressCT = 0;
+    var countryKP = 0;
+    var countryCT = 0;
+    var zipKP = 0;
+    var zipCT = 0;
+    var sexKP = 0;
+    var sexCT = 0;
+    var languageKP = 0;
+    var languageCT = 0;
+
+
+    // Below are the event listeners, two for each field; one tracks the keypresses, the other the characters typed
+    emailField.addEventListener("keypress", function () {
+        emailKP++;
+    });
+
+    emailField.addEventListener("input", function () {
+        emailCT += event.target.value.length;
+    });
+
+    passwordField.addEventListener("keypress", function () {
+        passwordKP++;
+    });
+
+    passwordField.addEventListener("input", function () {
+        passwordCT += event.target.value.length;
+    });
+
+    usernameField.addEventListener("keypress", function () {
+        usernameKP++;
+    });
+
+    usernameField.addEventListener("input", function () {
+        usernameCT += event.target.value.length;
+    });
+
+    nameField.addEventListener("keypress", function () {
+        nameKP++;
+    });
+
+    nameField.addEventListener("input", function () {
+        nameCT += event.target.value.length;
+    });
+
+    addressField.addEventListener("keypress", function () {
+        addressKP++;
+    });
+
+    addressField.addEventListener("input", function () {
+        addressCT += event.target.value.length;
+    });
+
+    countryField.addEventListener("keypress", function () {
+        countryKP++;
+    });
+
+    countryField.addEventListener("input", function () {
+        countryCT += event.target.value.length;
+    });
+
+    zipField.addEventListener("keypress", function () {
+        zipKP++;
+    });
+
+    zipField.addEventListener("input", function () {
+        zipCT += event.target.value.length;
+    });
+
+    sexField.addEventListener("keypress", function () {
+        sexKP++;
+    });
+
+    sexField.addEventListener("input", function () {
+        sexCT += event.target.value.length;
+    });
+
+    languageField.addEventListener("keypress", function () {
+        languageKP++;
+    });
+
+    languageField.addEventListener("input", function () {
+        languageCT += event.target.value.length;
+    });
+
+
+    // The event listener for mouse clicks
+    form.addEventListener("click", function () {
+        clickCount++;
+    });
+
+    // The event listener for the time
+    form.addEventListener("submit", function () {
+        event.preventDefault();
+        endTime = new Date();
+        totalTimeSpent = (endTime - startTime) / 1000;
+
+        // Populating hidden div with user data
+        let signUpData = "Number of mouse clicks: " + clickCount + "<br>" + "Total time spent: " + timeSpent + " seconds <br>" + "Total key presses for:<br>the email field:" + emailKP + "<br>" + "the password field:" + passwordKP + "<br>" + "the username field:" + usernameKP + "<br>" + "the name field:" + nameKP + "<br>" + "the address field:" + addressKP + "<br>" + "the country field:" + countryKP + "<br>" + "the zip field:" + zipKP + "<br>" + "the sex field:" + sexKP + "<br>" + "the language field:" + languageKP + ".<br>" + "Total number of characters typed for:<br>the email field:" + emailCT + "<br>" + "the password field:" + passwordCT + "<br>" + "the username field:" + usernameCT + "<br>" + "the name field:" + nameCT + "<br>" + "the address field:" + addressCT + "<br>" + "the country field:" + countryCT + "<br>" + "the zip field:" + zipCT + "<br>" + "the sex field:" + sexCT + "<br>" + "the language field:" + languageCT + ".";
+        console.log(signUpData);
+        hiddenDiv.style.display = "block";
+    });
+
+    // Starting the timer right after the page loads
+    startTime = new Date();
+</script>

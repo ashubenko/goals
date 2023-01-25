@@ -42,6 +42,7 @@
     font-weight: 600;
     min-width: 5vw;
     max-width: 50vw;
+    cursor: pointer;
 }
 .form-title{
     font-size: 2rem;
